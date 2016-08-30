@@ -27,7 +27,10 @@ public class TatetiTestCase {
 	
 	@Test
 	public void testGanoJugador1() {
-		assertEquals(juego1.estado(),"Empatado");
+		juego1.marcar("X",0);
+		juego1.marcar("X",1);
+		juego1.marcar("X",2);
+		assertEquals("Ganado",juego1.estado());
 	}
 	
 	

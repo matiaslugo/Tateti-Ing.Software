@@ -31,4 +31,37 @@ public class Tablero {
 		}
 		return estaVacio;
 	}
+
+	public void marcar(String string, int i) {
+		this.casilleros.get(i).numeroJugador=string;
+		this.actualizarEstado(string);
+	}
+
+	private void actualizarEstado(String string) {
+		// TODO Auto-generated method stub
+		switch(this.celdasOcupadasPorJugador(string)){
+		case " 012" : this.estado = "Ganado";
+		case " 345" : this.estado = "Ganado";
+		case " 678" : this.estado = "Ganado";
+		case " 036" : this.estado = "Ganado";
+		case " 147" : this.estado = "Ganado";
+		case " 258" : this.estado = "Ganado";
+		case " 048" : this.estado = "Ganado";
+		case " 247" : this.estado = "Ganado";
+		}
+	}
+	
+	private String celdasOcupadasPorJugador(String string ) {
+		String res=" ";
+		for(int i=0;i<9;i++){
+			if(casilleros.get(i).numeroJugador==string){
+				String val = String.valueOf(((casilleros.get(i).numero)));
+				res +=val;
+			}
+		}
+		return res;
+	}
+	
+	
+	
 }

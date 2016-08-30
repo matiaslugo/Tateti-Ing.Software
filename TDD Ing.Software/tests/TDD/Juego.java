@@ -16,4 +16,11 @@ public class Juego {
 		
 		return tablero.estaVacio();
 	}
+
+	public void marcar(String string,int i) {
+		tablero.marcar(string,i);
+		
+	}
+	
+	
 }
