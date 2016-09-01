@@ -19,9 +19,20 @@ public class TatetiTestCase {
 		assertTrue(juego1.tableroVacio());
 	}
 	
+	@Test
+	public void testCasilleroEquivocado() {
+		juego1.marcar("O",0);
+		juego1.marcar("X",1);
+		
+		assertTrue(juego1.tableroVacio());
+	}
+	
 	
 	@Test
 	public void testEmpate() {
+		juego1.marcar("O",0);
+		juego1.marcar("X",1);
+		juego1.marcar("X",2);
 		assertEquals(juego1.estado(),"Empatado");
 	}
 	
