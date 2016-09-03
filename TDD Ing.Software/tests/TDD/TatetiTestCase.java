@@ -2,6 +2,7 @@ package TDD;
 
 import static org.junit.Assert.*;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,23 +14,28 @@ public class TatetiTestCase {
 	public void setUp(){
 		juego1 = new Juego();
 	}
-
+	
+	@After
+	public void reset(){
+		juego1.setTablero();
+	}
+	
 	@Test
 	public void testTableroVacio() {
 		assertTrue(juego1.tableroVacio());
 	}
 	
-	@Test
-	public void testCasilleroEquivocado() {
+	@Test(expected = TatetiException.class)
+	public void testCasilleroEquivocado() throws TatetiException{
 		juego1.marcar("O",0);
-		juego1.marcar("X",1);
+		juego1.marcar("X",0);
 		
-		assertTrue(juego1.tableroVacio());
-	}
+		fail();
+		}
 	
 	
 	@Test
-	public void testEmpate() {
+	public void testEmpate() throws TatetiException {
 		juego1.marcar("O",0);
 		juego1.marcar("X",1);
 		juego1.marcar("X",2);
@@ -37,7 +43,7 @@ public class TatetiTestCase {
 	}
 	
 	@Test
-	public void testGanoJugador1() {
+	public void testGanoJugador1() throws TatetiException{
 		juego1.marcar("X",0);
 		juego1.marcar("X",1);
 		juego1.marcar("X",2);

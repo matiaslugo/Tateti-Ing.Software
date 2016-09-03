@@ -16,7 +16,7 @@ public class Casillero {
 
 	public boolean ocupado() {
 		// TODO Auto-generated method stub
-		return this.numeroJugador==null;
+		return this.numeroJugador!=null;
 	}
 	
 	

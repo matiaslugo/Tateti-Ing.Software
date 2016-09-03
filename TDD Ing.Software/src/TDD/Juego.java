@@ -2,7 +2,7 @@ package TDD;
 
 public class Juego {
 	
-	Tablero tablero;
+	private Tablero tablero;
 
 	public Juego(){
 		this.tablero = new Tablero();
@@ -17,9 +17,13 @@ public class Juego {
 		return tablero.estaVacio();
 	}
 
-	public void marcar(String string,int i) {
+	public void marcar(String string,int i) throws TatetiException {
 		tablero.marcar(string,i);
 		
+	}
+
+	public void setTablero() {
+		this.tablero = new Tablero();		
 	}
 	
 	

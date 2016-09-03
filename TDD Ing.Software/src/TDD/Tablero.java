@@ -27,18 +27,23 @@ public class Tablero {
 	public boolean estaVacio() {
 		boolean estaVacio = true;
 		for(int i=0;i<9;i++){
-			estaVacio = casilleros.get(i).ocupado();
+			estaVacio = !(casilleros.get(i).ocupado());
 		}
 		return estaVacio;
 	}
 
-	public void marcar(String string, int i) {
-		this.casilleros.get(i).numeroJugador=string;
-		this.actualizarEstado(string);
+	public void marcar(String string, int i) throws TatetiException {
+		if(this.casilleros.get(i).ocupado()){
+			throw new TatetiException();
+		}
+		else{
+			this.casilleros.get(i).numeroJugador=string;
+			this.actualizarEstado(string);
+		}
 	}
 
 	private void actualizarEstado(String string) {
-		// TODO Auto-generated method stub
+		
 		switch(this.celdasOcupadasPorJugador(string)){
 		case " 012" : this.estado = "Ganado";
 		case " 345" : this.estado = "Ganado";
